@@ -1,0 +1,50 @@
+
+#new_mod
+{
+  position: absolute;
+
+
+}
+#new_mod1
+{
+  position: absolute;
+
+
+}
+#para{
+ margin-left: 20px;
+
+}
+.all1{
+  position: relative;
+}
+.all
+{
+position: relative;
+  display: grid;
+  grid-template-areas: 'retour' 'container' 'footer';
+  grid-gap: 12px;
+  grid-template-rows: 40px 500px  200px;
+}
+.footer
+{
+
+  background-color: #039be5;
+padding: 40px;
+
+}
+.footer_nav{
+  display: flex;
+  justify-content: space-around;
+  color:white;
+  font-weight: bold;
+  font-size: 16px;
+   margin-left: 350px;
+   margin-right: 350px;
+   margin-top: 50px;
+   cursor: pointer;
+
+}
+.active{
+color: #fdd835;
+}

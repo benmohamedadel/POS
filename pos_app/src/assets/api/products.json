@@ -1,0 +1,38 @@
+[
+  {
+        "productId": 23541,
+        "productName": "Expresso",
+        "productPrice": 10,
+        "quantity":50,
+        "productCategory": "Café",
+        "productUrlimage": "assets/img/espresso-expresso.jpg"
+
+  },
+  {
+    "productId": 12548,
+    "productName": "Americano",
+    "quantity":50,
+    "productPrice":10,
+    "productCategory": "Café",
+    "productUrlimage": "assets/img/americano-recette-1024x682.jpg"
+
+},
+{
+  "productId": 12546,
+  "productName": "Allongé",
+  "quantity":50,
+  "productPrice": 10,
+  "productCategory": "Café",
+  "productUrlimage": "assets/img/téléchargement (1).jpeg"
+
+},
+{
+  "productId": 1,
+  "productName": "Capuccino",
+  "quantity":50,
+  "productPrice":10,
+  "productCategory": "Café",
+  "productUrlimage": "assets/img/téléchargement (1).jpeg"
+
+}
+]

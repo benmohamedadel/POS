@@ -1,0 +1,26 @@
+.bg-gradient-primary{
+  background-color: #238ae6;
+  display: grid;
+
+}
+.container
+{
+  margin-bottom: 10%;
+}
+.btn{
+  text-decoration: none;
+  color: white;
+
+}
+.div-btn{
+
+    padding: 0px 30px 0px 30px;
+    display:flex;
+    border-radius: 25px;
+    background-color: #fdd835;
+    flex-wrap: none;
+  justify-content: center;
+
+
+  }
+

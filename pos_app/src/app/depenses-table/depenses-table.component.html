@@ -1,0 +1,141 @@
+
+<div  id="all" class="all">
+
+  <div  class="retour" >
+    <i class="fa fa-arrow-left my-4"  style="margin-left:10px" aria-hidden="true" [routerLink]="['/manager']"></i>
+  </div>
+  <div  id="container" class="container " >
+    <table class="table">
+      <thead class="thead-dark">
+        <tr style="background-color: #039be5;">
+          <th scope="col">ID</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+          <th scope="col">Price</th>
+
+
+          <th scope="col"></th>
+          <th scope="col">Date</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"><i class="fa fa-plus-square " style="cursor: pointer;" aria-hidden="true" (click)="add_product()"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of depences">
+
+          <td>{{i.depenceId}}</td>
+          <td></td>
+          <td></td>
+          <td>{{i.depenceDescription}}</td>
+          <td></td>
+          <td>{{i.depencePrice}}</td>
+          <td></td>
+          <td>{{i.depenceDate}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> <i  style="cursor: pointer;" class="fa fa-trash-o mx-4" aria-hidden="true"(click)=" trach1(i.depenceId)" ></i> <i style="cursor: pointer;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit_product(i.depenceId)"></i></td>
+
+        </tr>
+        <tr>
+        </tbody>
+
+    </table>
+
+  </div>
+<div id="footer" class="footer">
+<div class="footer_nav">
+  <div routerLinkActive="active" [routerLink]="['/manager']">POS</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/products_table']">  produits</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/alerts_table']">alerts</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/purchases_table']">  achats</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/depences_table']" >  dépenses</div>
+
+</div>
+</div>
+
+
+<div  id= " new_mod"  style="max-width: 600px; margin-left:30%; position: absolute;" class="mt-5 container "   *ngIf="a!=''" >
+<div class=" card">
+<div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" >  Details de depense <div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body" [formGroup]="depenceFormm">
+<div  class="my-4">Modifier le prix (exprimé en €) :<input type="text"   style="display: inline;width: 50%; " class="form-control form-control-user" formControlName="depencePrice">     </div>
+<div>Modifier la description :
+</div>
+<div><textarea id="description" style="margin-top: 14px" formControlName="depenceDescription" name="description"
+  rows="5" cols="33">
+
+</textarea></div>
+<button type="button" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px; background-color: #fdd835;
+"  (click)="editDepence(depenceFormm)" >Valider</button>
+</div>
+<div class="form-group row-mb-2">
+<div class="offset-md-2 col-md-4 mb-2">
+
+</div>
+
+</div>
+</div>
+</div>
+<div  id= " new_mod1"  style="max-width: 600px; position: absolute; margin-left: 30%;" class="mt-5 container "  *ngIf="b!=''" >
+  <div class=" card">
+  <div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" >  Ajouter une depense<div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body" [formGroup]="depenceForm">
+  <div  class="my-4">Prix (exprimé en €):    <input type="text"   style="display: inline;width: 50%;" class="form-control form-control-user" formControlName="depencePrice">     </div>
+  <div class="alert alert-danger my-2 "  *ngIf="depenceForm.get('depencePrice')?.hasError('required') && depenceForm.get('depencePrice')?.touched">Please enter your  Price</div>
+
+
+<div> description :
+</div>
+<div>
+  <textarea id="description" style="margin-top: 14px" formControlName="depenceDescription" name="description"
+  rows="5" cols="33">
+
+</textarea>
+<div class="alert alert-danger my-2 "  *ngIf="depenceForm.get('depenceDescription')?.hasError('required') && depenceForm.get('depenceDescription')?.touched">Please enter your Description</div>
+</div>
+<button type="button" (click)="add_new_depence(depenceForm )" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px;background-color: #fdd835
+">Valider</button>
+</div></div></div>
+
+
+
+<div  id= " new_mod"  style="max-width: 600px; position: absolute; margin-left:30%;" class="mt-5 container "  *ngIf="c!=''" >
+<div class=" card">
+<div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" > Supprimer l'achat'<div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body" >
+<div   >Attention ! <div> Vous etes sur de supprimer la depence</div>        </div>
+
+<button type="button" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px; background-color: #fdd835;
+"   (click)="deleteDepence()">Valider</button>
+</div>
+<div class="form-group row-mb-2">
+<div class="offset-md-2 col-md-4 mb-2">
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+

@@ -1,0 +1,35 @@
+[
+    {
+          "saleId":  23541,
+           "saleName":"  2 Expresso + 1 Allongé",
+          "saleDate": "09/18/2022",
+          " salePrice":  100,
+          "server_name": "Saber",
+          "table_number":3
+    },
+    {
+      "saleId":  21541,
+      "saleName":"  2 Expresso + 1 Allongé",
+     "saleDate": "09/18/2022",
+     " salePrice":  800,
+     "server_name": "Saber",
+     "table_number":3
+    },
+    {
+      "saleId":  21241,
+      "saleName":"  2 Expresso + 1 Allongé",
+     "saleDate": "09/16/2022",
+     " salePrice":  800,
+     "server_name": "Saber",
+     "table_number":3
+    },
+    {
+           "saleId": 1,
+          "saleName": "Buea sweet life",
+          "saleDate": "Belle vue au bord de la mer",
+          " salePrice": 230.5,
+          "saleUrlimage": "assets/img/hotel-room.jpg",
+          "server_name": "Saber",
+          "table_number":3
+    }
+  ]

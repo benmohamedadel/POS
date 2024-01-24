@@ -1,0 +1,176 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nunito:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<div class="conta">
+  <div class="navbar" id="navbar">
+    <div class="logo"> <i class="fa fa-smile-o" style="color: yellow" aria-hidden="true"></i></div>
+  <!--<div><button type="button" class="btn btn-warning"  style ="background-color: #fdd835; margin-left:20px ;margin-right: 20px;" *ngFor="let sale of sales">Facture affectée le {{sale.saleDate}}  </button></div>-->
+
+
+    <div class="warning"><a [routerLink]="['/alerts_table']"><i class="fa fa-bell" [style.color]='alertVide(this.alerts)'  aria-hidden="true" ></i></a></div>
+
+  </div>
+  <div class="content" id="content">
+    <div class="content_left">
+
+      <div class="facture">
+        <div class="fact-att" ><span>product</span> <span>Quantity</span><span>Price</span><span></span></div>
+        <div class="hrr1">
+
+        </div>
+
+
+        <div class="content1">  <div id="payments" *ngFor="let i of payments" ><span id="1">{{i.productName}}</span> <span id="2">{{i.quantity}}</span><span id="3">{{i.productPrice|currency:'EUR':'symbol':'1.2-2':'fr'}}</span> <span><i class="fa fa-trash"  aria-hidden="true" (click)="trach(i.productName)"></i></span></div>  </div>
+        <div class="hrr1"></div>
+        <div class="Total" >Total :&nbsp;{{P |currency :'EUR':'symbol':'1.2-2':'fr'}}</div>
+        <div class="hrr"></div>
+    <div class="footer1">
+    <button type="button" class="btn btn-warning" (click)="Cancel()">Cancel</button>
+    <button type="button" class="btn btn-warning" (click)="confirm_payement()"> Confirm</button>
+    </div>
+
+    </div>
+
+  </div>
+
+    <div class="content_right"  >
+      <div class="content_right1">
+        <div class="form-check my-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked (click)="Cafe_category()">
+        <label class="form-check-label" for="exampleRadios1">
+  Café
+        </label>
+      </div>
+      <div class="form-check my-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (click)="the_category()">
+        <label class="form-check-label" for="exampleRadios2">
+          Thé
+        </label>
+      </div>
+      <div class="form-check my-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (click)="snacks_category()">
+        <label class="form-check-label" for="exampleRadios2">
+         snacks
+        </label>
+      </div>
+      <div class="form-check my-4">
+        <input (click)=" Other_drinks_category()" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+         Autres boissons
+        </label>
+      </div>
+      </div>
+      <div class="content_right12"> </div>
+
+      <div class="content_right2"  >
+        <div class="card"   *ngFor="let product of productfiltre" (click)="add_payment(product)">
+          <img class="card-img-top" src="http://localhost/POS/uploads/{{product.productImage}}" alt="Card image cap" style="height:100px;">
+          <div class="card-body" style="margin-top: 15px;">
+            <h5 class="card-title">{{product.productName}}</h5>
+            <p class="card-text">{{product.productPrice}}</p>
+            <p class="card-text"> {{product.productQuantity}}</p>
+
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+</div>
+</div>
+<div class="buttom " ><a class="buttom-a"[routerLink]="['/products_table']" >Edit</a></div>
+  <div class="footer" id="footer">
+
+<div class="footer_nav">
+  <div routerLinkActive="active" [routerLink]="['/manager']">POS</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/products_table']">  produits</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/alerts_table']">alerts</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/purchases_table']">  achats</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/depences_table']" >  dépenses</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/home']" (click)="remove()">  Logout</div>
+</div>
+
+
+
+  </div>
+  <div class="meduim" *ngIf="a!=''" [formGroup]="tqForm"   >
+    <div class="txt" >
+      <div class="form-check my-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked >
+        <label class="form-check-label" for="exampleRadios1">
+  Cash
+        </label>
+      </div>
+      <div class="form-check my-4">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2"  >
+        <label class="form-check-label" for="exampleRadios1">
+  Par carte
+        </label>
+      </div>
+
+
+      <div>
+        <div>Nom de serveur :</div>
+        <div  class="my-4"><input type="text"   style="display: inline;width: 50%;" class="form-control form-control-user" formControlName="serverName">     </div>
+      </div>
+
+      <label for="tentacles" class="mx-4">Numero de table:</label>
+
+<input type="number" id="tentacles" name="tentacles"
+       min="1" max="50" formControlName="tableNumber">
+
+
+    </div>
+
+    <div class="btt">
+
+      <button type="button" class="btn btn-warning"  printTitle="" printSectionId="imprimer" ngxPrint  (click)="imprimer(tqForm)">Imprimer</button>
+    </div>
+
+  </div>
+  <div class="imprimer" id="imprimer" [hidden]="true" >
+<div>
+<div class="txt" style="text-align: center;">
+  Welcome
+</div>
+
+  <hr >
+</div>
+<div class="informs" style="text-align: center;">
+  <div>serverName:&nbsp;{{tqForm.get('serverName')?.value}}</div>
+  <div>tableNumber:&nbsp;{{tqForm.get('tableNumber')?.value}}</div>
+
+</div>
+<div class="bod">
+  <div class="content1" style="text-align: center;">  <div id="payments" *ngFor="let i of payments" ><span id="1">{{i.productName}}&nbsp;&nbsp;</span> <span id="2">{{i.quantity}}&nbsp;&nbsp;</span><span id="3">{{i.productPrice|currency:'EUR':'symbol':'1.2-2':'fr'}}</span> </div>  </div>
+
+</div>
+<div>
+  <div class="Total"style="text-align:center ;" >Total :&nbsp;{{P |currency :'EUR':'symbol':'1.2-2':'fr'}}</div>
+</div>
+<div>
+  <hr >
+  <div style="text-align:center ;" >
+    Think you For comming to us
+    <div>
+      please come again
+    </div>
+  </div>
+
+
+  </div>
+
+  </div>
+</div>
+
+
+

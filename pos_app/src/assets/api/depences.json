@@ -1,0 +1,23 @@
+[
+  {
+    "depenceId": 12457,
+  "depenceDescription":"achat d'essence",
+    "depencePrice": 200,
+    "depenceDate":"10/04/2022"
+  },
+  {
+    "depenceId": 7584,
+  "depenceDescription":"achat fkjhkj",
+    "depencePrice": 50,
+    "depenceDate":"10/04/2022"
+  },
+  {
+    "depenceId": 75485,
+  "depenceDescription":"kjhjgjhv",
+    "depencePrice": 150,
+    "depenceDate":"10/04/2022"
+  }
+
+
+
+]

@@ -1,0 +1,138 @@
+
+<div  id="all" class="all">
+
+  <div  class="retour" >
+    <i class="fa fa-arrow-left my-4"  style="margin-left:10px" aria-hidden="true" [routerLink]="['/manager']"></i>
+  </div>
+  <div  id="container" class="container " >
+    <table class="table">
+      <thead class="thead-dark">
+        <tr style="background-color: #039be5;">
+          <th scope="col">ID</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Date</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"><i class="fa fa-plus-square "  aria-hidden="true" (click)="add_product()"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of purchases">
+
+          <td>{{i.purchaseId}}</td>
+          <td></td>
+          <td></td>
+          <td>{{i.purchaseDescription}}</td>
+          <td>{{i.purchasePrice}}</td>
+          <td>{{i.purchaseDate}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> <i class="fa fa-trash-o mx-4" aria-hidden="true"(click)=" trach1(i.purchaseId)" ></i> <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit_product(i)"></i></td>
+
+        </tr>
+        <tr>
+        </tbody>
+
+    </table>
+
+  </div>
+<div id="footer" class="footer">
+<div class="footer_nav">
+  <div routerLinkActive="active" [routerLink]="['/manager']">POS</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/products_table']">  produits</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/alerts_table']">alerts</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/purchases_table']">  achats</div>
+  <div>|</div>
+  <div routerLinkActive="active" [routerLink]="['/depences_table']" >  dépenses</div>
+
+</div>
+</div>
+
+
+<div  id= " new_mod"  style="max-width: 600px; position: absolute; margin-left:30%;" class="mt-5 container "  *ngIf="a!=''" >
+<div class=" card">
+<div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" >  Details de l'achat <div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body" [formGroup]="purchaseeForm">
+<div class="my-4" >Modifier le prix (exprimé en €) :<input type="text" style="display: inline;width: 50%;"class="form-control form-control-user" placeholder={{prch.purchasePrice}}   formControlName="purchasePrice">     </div>
+<div class="alert alert-danger my-2 "  *ngIf="purchaseeForm.get('purchasePrice')?.hasError('required') && purchaseeForm.get('purchasePrice')?.touched">Please enter your purchasePrice</div>
+<div >Modifier la description :
+</div>
+<div><textarea id="description" style="margin-top: 14px" name="description"
+  rows="5" cols="33" formControlName="purchaseDescription">
+</textarea> </div>
+<div class="alert alert-danger my-2 "  *ngIf="purchaseeForm.get('purchaseDescription')?.hasError('required') && purchaseeForm.get('purchaseDescription')?.touched">Please enter your purchasePrice</div>
+<button type="button" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px; background-color: #fdd835;
+" (click)="editPurchase()">Valider</button>
+</div>
+<div class="form-group row-mb-2">
+<div class="offset-md-2 col-md-4 mb-2">
+
+</div>
+
+</div>
+</div>
+</div>
+<div  id= " new_mod1"  style="max-width: 600px; position: absolute; margin-left: 30%;" class="mt-5 container "  *ngIf="b!=''" >
+<div class=" card">
+<div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" [formGroup]="purchaseForm" >  Ajouter une achat<div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body" [formGroup]="purchaseForm">
+  <div  class="my-4"> Id de produit (il doit etre existe ):    <input type="text"   style="display: inline;width: 50%;" class="form-control form-control-user" formControlName="productId">     </div>
+  <div class="alert alert-danger my-2 "  *ngIf="purchaseForm.get('productId')?.hasError('required') && purchaseForm.get('productId')?.touched">Please enter your product Id</div>
+  <div  class="my-4">Prix (exprimé en €):    <input type="text"   style="display: inline;width: 50%;" class="form-control form-control-user" formControlName="purchasePrice">     </div>
+  <div class="alert alert-danger my-2 "  *ngIf="purchaseForm.get('purchasePrice')?.hasError('required') && purchaseForm.get('purchasePrice')?.touched">Please enter your purchase Price</div>
+  <div  class="my-4">Quantity (exprimé en Kg):    <input type="text"   style="display: inline;width: 50%;" class="form-control form-control-user" formControlName="purchaseQuantity">     </div>
+  <div class="alert alert-danger my-2 "  *ngIf="purchaseForm.get('purchaseQuantity')?.hasError('required') && purchaseForm.get('purchaseQuantity')?.touched">Please enter your purchase Price</div>
+
+<div> description :
+</div>
+<div><textarea id="description" style="margin-top: 14px" formControlName="purchaseDescription" name="description"
+  rows="5" cols="33">
+
+</textarea></div>
+<button type="button"           (click)="add_new_product(purchaseForm )" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px;background-color: #fdd835
+">Valider</button>
+</div>
+<div class="form-group row-mb-2">
+<div class="offset-md-2 col-md-4 mb-2">
+
+</div>
+
+</div>
+</div>
+</div>
+<div  id= " new_mod"  style="max-width: 600px; position: absolute; margin-left:30%;" class="mt-5 container "  *ngIf="c!=''" >
+<div class=" card">
+<div class="card-header  " style="background-color:#039be5 ;display: flex; justify-content: space-between; font-weight: bold;" > Supprimer l'achat'<div (click)=" retour_tab()" ><i class="fa fa-times-circle" aria-hidden="true"></i></div></div>
+
+<div class="card-body">
+<div>Attention ! <div> Vous etes sur de supprimer l'achat</div>        </div>
+
+<button type="button" class="btn btn-warning" style="    margin-top: 20px;
+margin-left: 443px; background-color: #fdd835;
+" (click)=" deletePurchase()" >Valider</button>
+</div>
+<div class="form-group row-mb-2">
+<div class="offset-md-2 col-md-4 mb-2">
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+

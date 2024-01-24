@@ -1,0 +1,20 @@
+[
+  {
+    "purchaseId": 12457,
+  "purchaseDescription":"achat de 20kg café",
+    "purchasePrice": 200
+  },
+  {
+    "purchaseId": 7584,
+  "purchaseDescription":"achat de 50kg du sucre",
+    "purchasePrice": 50
+  },
+  {
+    "purchaseId": 75485,
+  "purchaseDescription":"achat de 200 bouteil d'eau",
+    "purchasePrice": 150
+  }
+
+
+
+]
